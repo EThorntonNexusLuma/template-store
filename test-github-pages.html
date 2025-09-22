@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .test-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .timestamp {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 GitHub Pages Diagnostic Test</h1>
+        
+        <div class="test-box">
+            <h2>✅ Static HTML Loading</h2>
+            <p>If you can see this, GitHub Pages is serving static files correctly!</p>
+        </div>
+        
+        <div class="test-box">
+            <h2>📄 Build Information</h2>
+            <p><strong>Build Time:</strong> <span class="timestamp" id="buildTime"></span></p>
+            <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+            <p><strong>Current URL:</strong> <span id="currentUrl"></span></p>
+        </div>
+        
+        <div class="test-box">
+            <h2>🔧 JavaScript Test</h2>
+            <p id="jsTest">JavaScript is NOT working</p>
+        </div>
+        
+        <div class="test-box">
+            <h2>🌐 Asset Loading Test</h2>
+            <img src="./Nexus Luma up copy.png" alt="Logo Test" style="max-width: 100px; height: auto;" onerror="this.style.display='none'; document.getElementById('imgError').style.display='block';">
+            <div id="imgError" style="display: none; color: #ff6b6b;">❌ Image loading failed</div>
+        </div>
+    </div>
+
+    <script>
+        // Test JavaScript execution
+        document.getElementById('jsTest').textContent = '✅ JavaScript is working!';
+        document.getElementById('jsTest').style.color = '#4ade80';
+        
+        // Display build info
+        document.getElementById('buildTime').textContent = new Date().toLocaleString();
+        document.getElementById('userAgent').textContent = navigator.userAgent;
+        document.getElementById('currentUrl').textContent = window.location.href;
+        
+        // Log to console for debugging
+        console.log('GitHub Pages Test - JavaScript loaded successfully');
+        console.log('Current URL:', window.location.href);
+        console.log('Base URL:', window.location.origin);
+        console.log('Pathname:', window.location.pathname);
+    </script>
+</body>
+</html>

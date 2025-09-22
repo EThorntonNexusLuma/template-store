@@ -79,8 +79,8 @@ try {
     rootElement.innerHTML = `
       <div style="padding: 20px; color: red; font-family: Arial, sans-serif;">
         <h1>❌ React Startup Error</h1>
-        <p><strong>Error:</strong> ${(error as Error).message}</p>
-        <p><strong>Stack:</strong> ${(error as Error).stack}</p>
+        <p><strong>Error:</strong> ${error.message}</p>
+        <p><strong>Stack:</strong> ${error.stack}</p>
         <p><strong>Time:</strong> ${new Date().toISOString()}</p>
       </div>
     `;
