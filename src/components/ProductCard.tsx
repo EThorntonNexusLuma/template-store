@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Heart, Star, ArrowRight } from "lucide-react";
 import type { Product } from "../stripe-config";
 import { getProductMediaPath } from "../utils/paths";
+import { handleCheckout } from "../utils/checkout";
 
 type Props = {
   product: Product;
@@ -78,10 +79,8 @@ export const ProductCard: React.FC<Props> = ({ product, onLike, isLiked }) => {
     return stars;
   };
 
-  const handleGetStarted = () => {
-    if (product.checkoutUrl) {
-      window.open(product.checkoutUrl, '_blank');
-    }
+  const handleGetStarted = async () => {
+    await handleCheckout(product);
   };
 
   return (
@@ -120,12 +119,8 @@ export const ProductCard: React.FC<Props> = ({ product, onLike, isLiked }) => {
         </button>
 
         <div className="absolute top-3 left-3">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-            product.mode === "subscription" 
-              ? "bg-blue-500/20 text-blue-300 border border-blue-400/30" 
-              : "bg-green-500/20 text-green-300 border border-green-400/30"
-          }`}>
-            {product.mode === "subscription" ? "Subscription" : "One-time"}
+          <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-green-500/20 text-green-300 border border-green-400/30">
+            One-time
           </span>
         </div>
       </div>
@@ -151,13 +146,7 @@ export const ProductCard: React.FC<Props> = ({ product, onLike, isLiked }) => {
           <div className="flex flex-col items-center text-center">
             <div className="flex items-baseline gap-1">
               <span className="text-2xl font-bold text-white">${product.price.toFixed(2)}</span>
-              <span className="text-sm text-gray-400">
-                {product.mode === "subscription" ? "/month" : ""}
-              </span>
             </div>
-            {product.mode === "subscription" && (
-              <span className="text-xs text-gray-500">Cancel anytime</span>
-            )}
           </div>
         </div>
 
