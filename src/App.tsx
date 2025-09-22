@@ -15,6 +15,9 @@ import { LegalModals } from './components/LegalModals';
 import { products } from './stripe-config';
 
 function App() {
+  // Debug log to verify App component mounts
+  console.log('Nexus Luma App component mounted successfully');
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [likedProducts, setLikedProducts] = useState<Set<string>>(new Set());
   const [scrolled, setScrolled] = useState(false);
